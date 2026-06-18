@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - loot nexus</title>
+    <link rel="stylesheet" href="main.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <h1 class="logo">loot nexus</h1>
+            <ul class="nav-links">
+                <li><a href="index.html">home</a></li>
+                <li><a href="shop.html">shop</a></li>
+                <li><a href="contact.html">contact</a></li>
+            </ul>
+            <div class="icons">
+                <a href="cart.html"><i class='bx bx-cart-add'></i><span class="cart-count">0</span></a>
+                <a href="contact.html"><i class='bx bx-user' ></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="cart-section">
+        <h1>Order Summary & Payment</h1>
+        <div id="checkout-items"></div>
+        <div id="checkout-total">Total: $0.00</div>
+
+        <div class="payment-section">
+            <h2>Payment Method: Cryptocurrency (Fastest)</h2>
+            <div id="crypto-info" class="crypto-box">
+                <p>Please send your exact payment to the following wallet address:</p>
+                <p class="crypto-address"><strong>1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa</strong></p>
+                <p style="margin-top:15px; font-size:14px;">To complete your order: please forward your transaction receipt or TXID alongside your order details to our support team via Telegram or Email. Your products will be dispatched immediately following network confirmation.</p>
+                <ol style="text-align:left; margin:10px 0; font-size:14px;">
+                    <li>Copy your transaction ID (TXID)</li>
+                    <li>Contact us with the TXID and your order summary</li>
+                    <li>We'll verify and send you your product</li>
+                </ol>
+            </div>
+
+            <div class="contact-box">
+                <p>Contact us with your transaction receipt:</p>
+                <div class="contact-links">
+                    <a href="https://t.me/lootnexus_support" target="_blank" rel="noopener noreferrer"><i class='bx bxl-telegram'></i> Telegram</a>
+                    <a href="contact.html" rel="noopener noreferrer"><i class='bx bxs-envelope'></i> Email</a>
+                    <button type="button" class="copy-email-btn" onclick="copySupportEmail()">Copy support email</button>
+                </div>
+                <p class="email-fallback">If the link does not open, copy the email and paste it into your mail app.</p>
+            </div>
+        </div>
+
+        <div class="other-payments">
+            <h3>Other Payment Methods?</h3>
+            <p>We also accept alternative payment methods. Contact us to inquire:</p>
+            <button onclick="redirectToContact()" class="contact-btn">Contact Support for Other Options</button>
+        </div>
+
+        <button onclick="goBackToCart()" class="back-btn">Back to Cart</button>
+    </section>
+
+    <footer>
+        <p>loot nexus — fast digital game deals</p>
+        <p>© 2026 loot nexus</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loot nexus</title>
+   <link rel="stylesheet" href="main.css">
+   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+   <script src="script.js" defer></script>
+ 
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <h1 class="logo">loot nexus</h1>
+            <ul class="nav-links">
+                <li><a href="index.html">home</a></li>
+                <li><a href="shop.html">shop</a></li>
+                <li><a href="contact.html">contact</a></li>
+            </ul>
+            <div class="icons">
+                <a href="cart.html"><i class='bx bx-cart-add'></i><span class="cart-count">0</span></a>
+                <a href="contact.html"><i class='bx bx-user'></i></a>
+            </div>
+        </div>
+    </nav>
+
+   
+
+    <section class="produce">
+
+    <h1>Our Products</h1>
+    <input type="text" id="search-input" placeholder="Search products..." onkeyup="filterProducts()">
+    <div class="products">
+
+        <div class="product-card">
+            <img src="fortnite loot nexus.webp" alt="Fortnite crew subscription">
+            <p>fortnite crew subscription x2 months</p>
+            <small>$15.00</small>
+            <button onclick="addToCart('Fortnite Crew Subscription x2 Months', '$15.00')">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="fortnite loot nexus.webp" alt="Fortnite V-Bucks bundle">
+            <p>fortnite 12000 vbucks</p>
+            <small>$30.00</small>
+            <button onclick="addToCart('Fortnite 12000 V-Bucks', '$30.00')">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="fortnite loot nexus.webp" alt="Fortnite V-Bucks" class="my-image">
+            <p>fortnite 1000 vbucks</p>
+            <small>$8.00</small>
+            <button onclick="addToCart('Fortnite 1000 V-Bucks', '$8.00')">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="fortnite loot nexus.webp" alt="Fortnite crew subscription" class="my-image">
+            <p>fortnite crew 1 year subscription</p>
+            <small>$30.00</small>
+
+            <button onclick="addToCart('Fortnite Crew 1 Year Subscription', '$30.00')">Add to Cart</button>        </div>
+
+        <div class="product-card">
+            <img src="fortnite loot nexus.webp" alt="Fortnite skin package" class="my-image">
+            <p>fortnite gift any skin package 1500vb</p>
+            <small>$10.00</small>
+
+            <button onclick="addToCart('Fortnite Skin Package 1500 V-Bucks', '$10.00')">Add to Cart</button>        </div>
+
+
+        <div class="product-card">
+            <img src="xbox logo loot nexus.webp" alt="Xbox Game Pass subscription" class="my-image">
+            <p>xbox game pass ultimate subscription x3 months</p>
+            <small>$30.00</small>
+
+            <button onclick="addToCart('Xbox Game Pass Ultimate x3 Months', '$30.00')">Add to Cart</button>        </div>
+
+        <div class="product-card">
+            <img src="playstation loot nexus.webp" alt="PlayStation gift card $10" class="my-image">
+            <p>playstation giftcard $10</p>
+            <small>$8.00</small>
+            <button onclick="addToCart('PlayStation Gift Card $10', '$8.00')">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="playstation loot nexus.webp" alt="PlayStation gift card $5" class="my-image">
+            <p>playstation giftcard $5</p>
+            <small>$4.00</small>
+            <button onclick="addToCart('PlayStation Gift Card $5', '$4.00')">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="fortnite loot nexus.webp" alt="Fortnite 2000 V-Bucks skin package" class="my-image">
+            <p>fortnite gift any skin package 2000vb and above</p>
+            <small>$15.00</small>
+            <button onclick="addToCart('Fortnite Skin Package 2000+ V-Bucks', '$15.00')">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="cod mobile loot nexus.webp" alt="COD Mobile 13,000 CP" class="my-image">
+            <p>13,000 CP</p>
+            <small>$50.00</small>
+            <button onclick="addToCart('COD Mobile 13,000 CP', '$50.00')">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="cod mobile loot nexus.webp" alt="COD Mobile 5000 CP" class="my-image">
+            <p>5000 cp</p>
+            <small>$15.00</small>
+            <button onclick="addToCart('COD Mobile 5000 CP', '$15.00')">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="playstation loot nexus.webp" alt="PlayStation Plus Premium 1 Month" class="my-image">
+            <p>playstion plus premium subscription 1 month</p>
+            <small>$5.00</small>
+            <button onclick="addToCart('PlayStation Plus Premium 1 Month', '$5.00')">Add to Cart</button>
+        </div>
+
+            <div class="product-card">
+            <img src="playstation loot nexus.webp" alt="PlayStation Plus Premium 3 Months" class="my-image">
+            <p>playstation plus premium subscription x3 months</p>
+            <small>$20.00</small>
+            <button onclick="addToCart('PlayStation Plus Premium x3 Months', '$20.00')">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="playstation loot nexus.webp" alt="PlayStation Plus Premium 1 Year" class="my-image">
+            <p>playstation plus premium subscription 1 year</p>
+            <small>$40.00</small>
+            <button onclick="addToCart('PlayStation Plus Premium 1 Year', '$40.00')">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="cod mobile loot nexus.webp" alt="COD Mobile loaded account package" class="my-image">
+            <p>call of duty mobile loaded account package</p>
+            <small>$30.00</small>
+            <button onclick="addToCart('COD Mobile Loaded Account Package', '$30.00')">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="cod mobile loot nexus.webp" alt="COD Mobile loaded account package premium" class="my-image">
+            <p>call of duty mobile loaded account package premium</p>
+            <small>$50.00</small>
+            <button onclick="addToCart('COD Mobile Loaded Account Package Premium', '$50.00')">Add to Cart</button>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    </section>
+
+</body>
+</html>
