@@ -66,11 +66,32 @@ function copyText(text, successMessage) {
         .catch(() => alert(`Please copy this manually: ${text}`));
 }
 
-// Mark the order as placed: clear the cart and confirm to the user
-function confirmOrderSent() {
+// Mark the order as placed: save it to the order tracker, clear the cart, and confirm to the user
+async function confirmOrderSent() {
     if (!confirm("Confirm you've sent payment and messaged us your TXID? This will clear your cart.")) {
         return;
     }
+
+    const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
+    const contactInput = document.getElementById('order-contact');
+    const contact = contactInput ? contactInput.value.trim() : '';
+    const btn = document.querySelector('.order-sent-btn');
+    if (btn) {
+        btn.disabled = true;
+        btn.textContent = 'Saving your order…';
+    }
+
+    try {
+        const res = await fetch('/api/orders', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ items: currentCart, contact }),
+        });
+        if (!res.ok) throw new Error('Order save failed');
+    } catch (err) {
+        alert("We couldn't save your order automatically, but don't worry — just make sure to message us your TXID and order details directly so we can process it.");
+    }
+
     localStorage.removeItem('cart');
     cart = [];
     updateCartCount();
