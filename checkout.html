@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout - loot nexus</title>
+    <meta name="description" content="Complete your loot nexus order securely via USDT (TRC20).">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%AE%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="main.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="script.js" defer></script>
@@ -30,10 +32,12 @@
         <div id="checkout-total">Total: $0.00</div>
 
         <div class="payment-section">
-            <h2>Payment Method: Cryptocurrency (Fastest)</h2>
+            <h2>Payment Method: USDT (TRC20)</h2>
             <div id="crypto-info" class="crypto-box">
+                <p class="network-warning"><strong>⚠️ Network: TRC20 only.</strong> Sending any other coin or using a different network (ERC20, BEP20, etc.) may result in permanent loss of funds.</p>
                 <p>Please send your exact payment to the following wallet address:</p>
-                <p class="crypto-address"><strong>1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa</strong></p>
+                <p class="crypto-address"><strong id="wallet-address">TWvMmqxTP4mydmZp1nRq8qUGCbzxFeiYbA</strong></p>
+                <button type="button" class="copy-email-btn" onclick="copyWalletAddress()">Copy wallet address</button>
                 <p style="margin-top:15px; font-size:14px;">To complete your order: please forward your transaction receipt or TXID alongside your order details to our support team via Telegram or Email. Your products will be dispatched immediately following network confirmation.</p>
                 <ol style="text-align:left; margin:10px 0; font-size:14px;">
                     <li>Copy your transaction ID (TXID)</li>
@@ -46,11 +50,13 @@
                 <p>Contact us with your transaction receipt:</p>
                 <div class="contact-links">
                     <a href="https://t.me/lootnexus_support" target="_blank" rel="noopener noreferrer"><i class='bx bxl-telegram'></i> Telegram</a>
-                    <a href="contact.html" rel="noopener noreferrer"><i class='bx bxs-envelope'></i> Email</a>
+                    <a href="#" onclick="redirectToEmail(); return false;" rel="noopener noreferrer"><i class='bx bxs-envelope'></i> Email</a>
                     <button type="button" class="copy-email-btn" onclick="copySupportEmail()">Copy support email</button>
                 </div>
                 <p class="email-fallback">If the link does not open, copy the email and paste it into your mail app.</p>
             </div>
+
+            <button type="button" class="order-sent-btn" onclick="confirmOrderSent()">I've sent payment — mark order as placed</button>
         </div>
 
         <div class="other-payments">

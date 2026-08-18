@@ -8,6 +8,7 @@
     border: 0;
     outline: none;
     font-family:"urbanist", serif;
+    box-sizing: border-box;
     }
 
     body{
@@ -71,11 +72,10 @@
 
     
     nav ul {
-        width: 20%;
+        width: auto;
         height:100%;
         display: flex;
         align-items: center;
-        justify-content: space-between;
     }
 
 
@@ -100,6 +100,10 @@
         color: white;
         position: relative;
         font-size: 22px;
+        padding: 8px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         transition: color 0.2s ease;
     }
 
@@ -109,8 +113,8 @@
 
     .cart-count {
         position: absolute;
-        top: -5px;
-        right: -5px;
+        top: 2px;
+        right: 2px;
         background-color: rgb(240, 15, 52);
         color: white;
         border-radius: 50%;
@@ -157,7 +161,7 @@
 
 
     section.hero{
-      background-image: url("fortnitr new.JPG");
+      background-image: url("fortnitr new.webp");
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -573,6 +577,28 @@ section.produce h1 {
     font-size: 0.9rem;
     color: #ccc;
 }
+.network-warning {
+    background-color: rgba(240, 15, 52, 0.25);
+    border: 1px solid rgba(240, 15, 52, 0.6);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+}
+.order-sent-btn {
+    background-color: rgb(240, 15, 52);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 8px;
+    transition: background-color 0.3s;
+}
+.order-sent-btn:hover {
+    background-color: rgb(250, 25, 62);
+}
 
 #crypto-info p {
     margin: 10px 0;
@@ -857,6 +883,7 @@ footer{
     .contact-btn,
     .back-btn,
     .copy-email-btn,
+    .order-sent-btn,
     .submit-btn {
         width: 100%;
         box-sizing: border-box;
@@ -951,6 +978,7 @@ footer{
     .contact-btn,
     .back-btn,
     .copy-email-btn,
+    .order-sent-btn,
     .checkout-actions button,
     .payment-options button {
         min-height: 48px;
@@ -969,7 +997,7 @@ footer{
 section.contact-hero {
     min-height: 40vh;
     height: auto;
-    background: linear-gradient(135deg, rgba(240, 15, 52, 0.35), rgba(0, 0, 0, 0.9)), url('fortnite 1.jpg');
+    background: linear-gradient(135deg, rgba(240, 15, 52, 0.35), rgba(0, 0, 0, 0.9)), url('fortnite 1.webp');
     background-size: cover;
     background-position: center;
     background-blend-mode: overlay;

@@ -47,36 +47,36 @@ function redirectToEmail() {
 }
 
 function copySupportEmail() {
-    if (!navigator.clipboard) {
-        alert(`Please copy this email manually: ${supportEmail}`);
-        return;
-    }
-
-    navigator.clipboard.writeText(supportEmail)
-        .then(() => {
-            alert('Support email copied to clipboard: ' + supportEmail);
-        })
-        .catch(() => {
-            alert(`Please copy this email manually: ${supportEmail}`);
-        });
+    copyText(supportEmail, `Support email copied to clipboard: ${supportEmail}`);
 }
 
-// Load cart on cart page
-document.addEventListener('DOMContentLoaded', () => {
-    updateCartCount();
-    const cartIcon = document.querySelector('.icons a[href*="cart"]');
-    if (cartIcon) {
-        cartIcon.addEventListener('click', (e) => {
-            e.preventDefault();
-            showCart();
-        });
-    }
+function copyWalletAddress() {
+    const address = document.getElementById('wallet-address');
+    if (!address) return;
+    copyText(address.textContent.trim(), 'Wallet address copied to clipboard.');
+}
 
-    // If on cart page, display items
-    if (window.location.pathname.includes('cart.html')) {
-        displayCartItems();
+function copyText(text, successMessage) {
+    if (!navigator.clipboard) {
+        alert(`Please copy this manually: ${text}`);
+        return;
     }
-});
+    navigator.clipboard.writeText(text)
+        .then(() => alert(successMessage))
+        .catch(() => alert(`Please copy this manually: ${text}`));
+}
+
+// Mark the order as placed: clear the cart and confirm to the user
+function confirmOrderSent() {
+    if (!confirm("Confirm you've sent payment and messaged us your TXID? This will clear your cart.")) {
+        return;
+    }
+    localStorage.removeItem('cart');
+    cart = [];
+    updateCartCount();
+    alert("Thanks! We'll verify your payment and deliver your order as soon as it's confirmed. Keep an eye on your email/Telegram.");
+    window.location.href = 'index.html';
+}
 
 // Display cart items on cart page
 function displayCartItems() {
@@ -113,18 +113,6 @@ function removeFromCart(index) {
     displayCartItems();
 }
 
-// Attach to cart icon
-document.addEventListener('DOMContentLoaded', () => {
-    updateCartCount();
-    const cartIcon = document.querySelector('.icons a[href*="shop"]');
-    if (cartIcon) {
-        cartIcon.addEventListener('click', (e) => {
-            e.preventDefault();
-            showCart();
-        });
-    }
-});
-
 // Product search/filter
 function filterProducts() {
     const query = document.getElementById('search-input').value.toLowerCase();
@@ -136,6 +124,10 @@ function filterProducts() {
 }
 
 // Contact form validation and submission
+// NOTE: this site is static (no backend), so "sending" opens the visitor's
+// own email client with the message pre-filled to our support address.
+// For a fully automatic inbox delivery (no email client required), wire
+// this form up to a service like Formspree or EmailJS instead.
 function validateForm() {
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
@@ -150,9 +142,15 @@ function validateForm() {
         alert('Invalid email');
         return false;
     }
-    // For demo, just alert success. In real, submit to Formspree.
-    alert('Message sent successfully!');
-    return true;
+
+    const mailSubject = encodeURIComponent(`[loot nexus] ${subject}`);
+    const mailBody = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\n\n${message}`
+    );
+    window.location.href = `mailto:${supportEmail}?subject=${mailSubject}&body=${mailBody}`;
+
+    alert("Opening your email app to send this message. If nothing opens, please email us directly at " + supportEmail);
+    return false; // prevent the default form GET-submit; mailto above handles it
 }
 
 // --- Checkout flow helpers ---
@@ -193,8 +191,9 @@ function displayCheckoutItems() {
     totalDiv.textContent = `Total: $${total.toFixed(2)}`;
 }
 
-// run checkout display when page loads
+// Run page-specific setup once the DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
+    updateCartCount();
     if (window.location.pathname.includes('checkout.html')) {
         displayCheckoutItems();
     }
