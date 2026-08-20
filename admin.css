@@ -47,6 +47,36 @@
     background-color: rgba(255, 255, 255, 0.05);
     color: white;
     font-size: 14px;
+    width: 100%;
+}
+
+.admin-password-wrap {
+    position: relative;
+    display: flex;
+}
+
+.admin-password-wrap input {
+    padding-right: 44px;
+}
+
+.toggle-password-btn {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 18px;
+    padding: 6px 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+.toggle-password-btn:hover {
+    color: rgb(240, 15, 52);
 }
 
 .admin-login button {

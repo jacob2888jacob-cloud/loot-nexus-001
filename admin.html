@@ -33,7 +33,12 @@
             <h1>Admin Login</h1>
             <p>Enter the admin password to view orders.</p>
             <form id="admin-login-form">
-                <input type="password" id="admin-password" placeholder="Password" autocomplete="current-password" required>
+                <div class="admin-password-wrap">
+                    <input type="password" id="admin-password" placeholder="Password" autocomplete="current-password" required>
+                    <button type="button" id="toggle-password" class="toggle-password-btn" aria-label="Show password" aria-pressed="false">
+                        <i class='bx bx-hide'></i>
+                    </button>
+                </div>
                 <button type="submit">Log in</button>
             </form>
             <p id="admin-login-error" class="admin-error hidden"></p>

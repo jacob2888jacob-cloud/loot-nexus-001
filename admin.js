@@ -4,6 +4,8 @@
     const dashboardView = document.getElementById('admin-dashboard');
     const loginForm = document.getElementById('admin-login-form');
     const loginError = document.getElementById('admin-login-error');
+    const passwordInput = document.getElementById('admin-password');
+    const togglePasswordBtn = document.getElementById('toggle-password');
     const ordersDiv = document.getElementById('admin-orders');
     const tabs = document.getElementById('admin-tabs');
     const refreshBtn = document.getElementById('admin-refresh');
@@ -32,6 +34,15 @@
             hide(dashboardView);
         }
     }
+
+    togglePasswordBtn.addEventListener('click', () => {
+        const showing = passwordInput.type === 'text';
+        passwordInput.type = showing ? 'password' : 'text';
+        togglePasswordBtn.innerHTML = showing ? "<i class='bx bx-hide'></i>" : "<i class='bx bx-show'></i>";
+        togglePasswordBtn.setAttribute('aria-label', showing ? 'Show password' : 'Hide password');
+        togglePasswordBtn.setAttribute('aria-pressed', String(!showing));
+        passwordInput.focus();
+    });
 
     loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
